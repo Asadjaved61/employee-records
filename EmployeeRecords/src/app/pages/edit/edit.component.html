@@ -1,0 +1,74 @@
+<div class="container" *ngIf="employee">
+  <h3 mb="6"><strong>Id:</strong> {{ employee.id }}</h3>
+  <form>
+    <div class="form-group">
+      <label for="name" class="control-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        [class.has-error]="nameControl.invalid"
+        id="name"
+        name="name"
+        [(ngModel)]="employee.name"
+        #nameControl="ngModel"
+        [ngModelOptions]="{ standalone: true }"
+        placeholder="Enter name"
+        required
+      />
+      <span
+        class="alert alert-danger"
+        mb="3"
+        *ngIf="nameControl.invalid && nameControl.touched"
+        >Name is required</span
+      >
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        [(ngModel)]="employee.email"
+        [ngModelOptions]="{ standalone: true }"
+        placeholder="Email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        [(ngModel)]="employee.phone"
+        [ngModelOptions]="{ standalone: true }"
+        placeholder="Phone number"
+      />
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input
+        type="text"
+        class="form-control"
+        id="address"
+        [(ngModel)]="employee.address.street"
+        [ngModelOptions]="{ standalone: true }"
+        placeholder="Address"
+      />
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        type="text"
+        class="form-control"
+        id="city"
+        [(ngModel)]="employee.address.city"
+        [ngModelOptions]="{ standalone: true }"
+        placeholder="City"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mr-1" (click)="onSubmit()">
+      Update
+    </button>
+    <button class="btn btn-primary" [routerLink]="['']">Back</button>
+  </form>
+</div>

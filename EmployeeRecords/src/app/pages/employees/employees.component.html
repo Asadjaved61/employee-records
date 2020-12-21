@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row row-flex">
+    <div
+      class="col-md-4 col-sm-6 mb-5"
+      [ngStyle]="{ display: 'flex' }"
+      *ngFor="let employee of employees"
+    >
+      <div class="card mx-auto" [ngStyle]="{ width: '20rem' }">
+        <div class="card-body">
+          <h5 class="card-title">{{ employee.name }}</h5>
+          <p class="card-text">
+            <span><strong>ID:</strong></span>
+            {{ employee.id }}
+          </p>
+          <p class="card-text">
+            <span><strong>Email:</strong></span>
+            {{ employee.email }}
+          </p>
+          <p class="card-text">
+            <span><strong>Phone:</strong></span>
+            {{ employee.phone }}
+          </p>
+          <p class="card-text">
+            <span><strong>Address:</strong></span>
+            {{ employee.address.street }}, {{ employee.address.city }}
+          </p>
+          <a
+            [routerLink]="['/employee/edit', employee.id]"
+            class="btn btn-primary"
+            >Edit</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
